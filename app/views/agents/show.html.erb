@@ -1,0 +1,34 @@
+  <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <h4><%= @agent.title %></h4>
+</p>
+
+<p>
+  <strong>Default email:</strong>
+  <%= @agent.contact.email if ! @agent.contact.nil? %>
+</p>
+<table class="table">
+  <thead>
+    <tr>
+      <%= link_to 'Add email', new_agent_contact_path(@agent), :class => "btn btn-default" %> |
+<%= link_to 'Edit', edit_agent_path(@agent) , :class=>"btn btn-default" %>
+      <th>email</th>
+      <th colspan="3"></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.email %></td>
+        <td><%= link_to 'Edit', edit_agent_contact_path(@agent,contact), :class=>"btn btn-primary" %></td>
+        <td><%= link_to 'Set default', sdefault_agent_contact_path(@agent,contact) , :class => "btn btn-success" %></td>
+        <td><%= link_to 'Destroy',agent_contact_path(@agent,contact), method: :delete , :class => "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', agents_path , :class=>"btn btn-default" %>

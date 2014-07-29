@@ -1,0 +1,28 @@
+<h1>Listing Agents</h1>
+
+<table class="table">
+<%= link_to 'New Agent', new_agent_path , :class=>"btn btn-warning"%>
+
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Default Contact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agents.each do |agent| %>
+      <tr>
+        <td><%= agent.title %></td>
+        <td><%= agent.contact.email if !agent.contact.nil? %></td>
+        <td><%= link_to 'Show', agent , :class=>"btn btn-info"%></td>
+        <td><%= link_to 'Edit', edit_agent_path(agent) , :class=>"btn btn-primary"%></td>
+        <td><%= link_to 'Destroy', agent, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>"btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
