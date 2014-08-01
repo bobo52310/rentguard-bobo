@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy, :sdefault]
   before_filter :find_agent
+
   # GET /contacts
   # GET /contacts.json
   def index
@@ -10,6 +11,8 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    # @contacts = @agent.contacts
+
   end
 
   # GET /contacts/new

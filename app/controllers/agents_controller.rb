@@ -5,8 +5,8 @@ class AgentsController < ApplicationController
   # GET /agents
   # GET /agents.json
   def index
-    @agents = Agent.all
-    # @contacts = @agent.contacts
+    # @agents = Agent.all
+    @agents = Agent.order(:id).page(params[:page]).per(3)
   end
 
   # GET /agents/1
